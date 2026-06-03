@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Arjun Parmar — Matrimonial Biodata</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rose: #C9636A;
+    --rose-light: #F2D9DB;
+    --rose-dark: #8B3A40;
+    --cream: #FDF8F3;
+    --gold: #C8956C;
+    --gold-light: #F5E6D8;
+    --text: #2A1F1F;
+    --text-muted: #7A6A6A;
+    --text-light: #B8A8A8;
+    --white: #FFFFFF;
+    --border: rgba(42,31,31,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(28,23,16,0.018) 28px, rgba(28,23,16,0.018) 29px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 3rem 2rem;
+    overflow: hidden;
+    background: #1C1710;
+  }
+  .cover-texture {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(rgba(10, 8, 5, 0.15), rgba(10, 8, 5, 0.35)),
+      url('bg.png') center center / cover no-repeat;
+    pointer-events: none;
+  }
+  .cover::before, .cover::after {
+    content: '';
+    position: absolute;
+    width: 160px; height: 160px;
+    border: 1.5px solid rgba(212,130,26,0.3);
+  }
+  .cover::before { top: 24px; left: 24px; border-right: none; border-bottom: none; }
+  .cover::after  { bottom: 24px; right: 24px; border-left: none; border-top: none; }
+
+  .cover-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 520px;
+  }
+  .cover-photo-ring {
+    width: 190px; height: 190px;
+    border-radius: 50%;
+    border: 2px solid rgba(212,130,26,0.4);
+    padding: 6px;
+    margin: 0 auto 2rem;
+    position: relative;
+  }
+  .cover-photo-ring::before {
+    content: '';
+    position: absolute; inset: -10px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,130,26,0.15);
+  }
+  .cover-photo {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 10%;
+    display: block;
+    background: linear-gradient(135deg, #3A2E22, #1C1710);
+  }
+  .cover-photo-placeholder {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2A2018, #1C1710);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cover-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    font-weight: 400;
+    color: #FBF7F0;
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+  }
+  .cover-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: rgba(251,247,240,0.5);
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+  .cover-badges {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    justify-content: center;
+  }
+  .cover-badge {
+    font-size: 11.5px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(251,247,240,0.2);
+    color: rgba(251,247,240,0.65);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── CONTENT ── */
+  .content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.8rem 1.4rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  /* ── SECTION HEADING ── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.4rem;
+  }
+  .section-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* ── ABOUT TEXT ── */
+  .about-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: #4A3535;
+    border-left: 3px solid var(--rose-light);
+    padding-left: 1.2rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  /* ── DETAIL GRID ── */
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.6rem;
+  }
+  .detail-cell { background: var(--white); padding: 14px 16px; }
+  .detail-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); margin-bottom: 4px; }
+  .detail-value { font-size: 14px; color: var(--text); font-weight: 500; }
+
+  /* ── CHIPS ── */
+  .chip-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.8rem; }
+  .chip { font-size: 12.5px; padding: 6px 14px; border-radius: 999px; background: var(--gold-light); color: #7A4A28; font-weight: 500; }
+  .chip.rose { background: var(--rose-light); color: var(--rose-dark); }
+
+  /* ── INTERESTS ── */
+  .interest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 12px;
+  }
+  .interest-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 14px 8px; text-align: center; }
+  .interest-icon { font-size: 22px; margin-bottom: 6px; display: block; }
+  .interest-label { font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; }
+
+  /* ── FAMILY ── */
+  .family-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .family-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.1rem; }
+  .family-role { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 4px; }
+  .family-name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .family-detail { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ── CONTACT ── */
+  .contact-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem; display: flex; gap: 14px; align-items: center; }
+  .contact-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--rose-light); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--rose-dark); flex-shrink: 0; }
+  .contact-name { font-size: 14px; font-weight: 500; }
+  .contact-sub  { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ── PHOTOS ── */
+  .photo-masonry { columns: 2; column-gap: 10px; }
+  @media (min-width: 500px) { .photo-masonry { columns: 3; } }
+
+  .photo-item { break-inside: avoid; margin-bottom: 10px; position: relative; border-radius: 12px; overflow: hidden; cursor: pointer; }
+  .photo-item img { width: 100%; height: auto; display: block; border-radius: 12px; transition: transform 0.3s, opacity 0.3s; }
+  .photo-item:hover img { transform: scale(1.03); opacity: 0.9; }
+
+  .photos-empty { text-align: center; padding: 2rem 1rem; color: var(--text-light); font-size: 13px; }
+  .photos-empty-icon { font-size: 2.4rem; display: block; margin-bottom: 8px; opacity: 0.4; }
+
+  /* ── PHOTO COUNT BADGE ── */
+  .photo-count-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    background: var(--rose-light);
+    color: var(--rose-dark);
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(10,5,5,0.93); z-index: 999; align-items: center; justify-content: center; padding: 1.5rem; backdrop-filter: blur(8px); }
+  .lightbox.open { display: flex; animation: lbIn 0.22s ease; }
+  @keyframes lbIn { from { opacity: 0; } to { opacity: 1; } }
+  .lightbox-img { max-width: 100%; max-height: 90vh; border-radius: 10px; object-fit: contain; box-shadow: 0 30px 80px rgba(0,0,0,0.6); }
+  .lightbox-close { position: fixed; top: 18px; right: 18px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .lightbox-close svg { width: 16px; height: 16px; stroke: white; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .lightbox-nav.prev { left: 14px; }
+  .lightbox-nav.next { right: 14px; }
+  .lightbox-nav svg { width: 16px; height: 16px; stroke: white; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .lightbox-counter { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .detail-grid { grid-template-columns: 1fr; }
+    .family-grid  { grid-template-columns: 1fr; }
+  }
+  @media print {
+    body { margin: 0; -webkit-print-color-adjust: exact; }
+    .no-print { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<section class="cover">
+  <div class="cover-texture"></div>
+  <div class="cover-inner">
+    <div class="cover-photo-ring">
+      <div class="cover-photo-placeholder">
+        <img src="WhatsApp Image 2026-04-20 at 00.01.40.jpeg" class="cover-photo" alt="Arjun Parmar">
+      </div>
+    </div>
+    <h1 class="cover-name">Arjun Parmar</h1>
+    <p class="cover-sub">Engineer · Dreamer · Family Man</p>
+    <div class="cover-badges">
+      <span class="cover-badge">26 years</span>
+      <span class="cover-badge">5′ 6″</span>
+      <span class="cover-badge">Computer Engineer</span>
+      <span class="cover-badge">Rajkot, Gujarat</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SINGLE PAGE CONTENT ══ -->
+<main class="content">
+
+  <!-- ABOUT -->
+  <section>
+    <p class="about-text">
+      A warm-hearted and curious soul who finds joy in building meaningful things — whether it's software or friendships. Grounded in values, open to adventure.
+    </p>
+
+    <div class="section-head"><h2>Personal Details</h2><div class="section-line"></div></div>
+    <div class="detail-grid">
+      <div class="detail-cell"><div class="detail-label">Date of Birth</div><div class="detail-value">10 November 2000</div></div>
+      <div class="detail-cell"><div class="detail-label">Time of Birth</div><div class="detail-value">09:50 AM</div></div>
+      <div class="detail-cell"><div class="detail-label">Place of Birth</div><div class="detail-value">Rajkot, Gujarat</div></div>
+      <div class="detail-cell"><div class="detail-label">Native Place</div><div class="detail-value">Aniyara</div></div>
+      <div class="detail-cell"><div class="detail-label">Height</div><div class="detail-value">5 ft 6 in</div></div>
+      <div class="detail-cell"><div class="detail-label">Blood Group</div><div class="detail-value">O+</div></div>
+      <div class="detail-cell"><div class="detail-label">Mother Tongue</div><div class="detail-value">Gujarati</div></div>
+      <div class="detail-cell"><div class="detail-label">Languages</div><div class="detail-value">Gujarati, Hindi, English</div></div>
+    </div>
+
+    <div class="section-head"><h2>Education & Career</h2><div class="section-line"></div></div>
+    <div class="detail-grid">
+      <div class="detail-cell"><div class="detail-label">Qualification</div><div class="detail-value">B.E. — Computer Engineering</div></div>
+      <div class="detail-cell"><div class="detail-label">University</div><div class="detail-value">Darshan University, 2021</div></div>
+      <div class="detail-cell"><div class="detail-label">Occupation</div><div class="detail-value">Software Engineer, Kevit Technologies, Rajkot</div></div>
+      <div class="detail-cell"><div class="detail-label">Currently In</div><div class="detail-value">Rajkot, Gujarat</div></div>
+    </div>
+
+    <div class="section-head"><h2>Personality</h2><div class="section-line"></div></div>
+    <div class="chip-group">
+      <span class="chip rose">Family-oriented</span>
+      <span class="chip rose">Adaptable</span>
+      <span class="chip rose">Optimistic</span>
+      <span class="chip">Vegetarian</span>
+      <span class="chip">No Addiction</span>
+    </div>
+
+    <div class="section-head"><h2>Hobbies & Interests</h2><div class="section-line"></div></div>
+    <div class="interest-grid">
+      <div class="interest-card"><span class="interest-icon">✈️</span><span class="interest-label">Travel</span></div>
+      <div class="interest-card"><span class="interest-icon">🎵</span><span class="interest-label">Music</span></div>
+      <div class="interest-card"><span class="interest-icon">🎬</span><span class="interest-label">Watching movies</span></div>
+      <div class="interest-card"><span class="interest-icon">🎥</span><span class="interest-label">Content creation</span></div>
+      <div class="interest-card"><span class="interest-icon">📱</span><span class="interest-label">Tech & gadgets</span></div>
+    </div>
+  </section>
+
+  <!-- PARTNER PREFERENCE -->
+  <section>
+    <div class="section-head"><h2>Partner Preference</h2><div class="section-line"></div></div>
+    <div class="detail-grid">
+      <div class="detail-cell"><div class="detail-label">Education</div><div class="detail-value">Graduate & above</div></div>
+      <div class="detail-cell"><div class="detail-label">Family & Values</div><div class="detail-value">Family-oriented and Understanding</div></div>
+    </div>
+  </section>
+
+  <!-- FAMILY -->
+  <section>
+    <p class="about-text">
+      A close-knit family rooted in Rajkot, Gujarat. Warm, welcoming, and deeply value-driven. We celebrate every festival together and believe a happy family is the greatest wealth.
+    </p>
+
+    <div class="section-head"><h2>Family Members</h2><div class="section-line"></div></div>
+    <div class="family-grid" style="margin-bottom:1.4rem">
+      <div class="family-card">
+        <div class="family-role">Father</div>
+        <div class="family-name">Shaileshbhai Gopalbhai Parmar</div>
+        <div class="family-detail">Menswear Designer</div>
+      </div>
+      <div class="family-card">
+        <div class="family-role">Mother</div>
+        <div class="family-name">Parulben Shaileshbhai Parmar</div>
+        <div class="family-detail">Dental Assistant</div>
+      </div>
+      <div class="family-card">
+        <div class="family-role">Sibling</div>
+        <div class="family-name">Younger Sister</div>
+        <div class="family-detail">Pursuing Doctor</div>
+      </div>
+    </div>
+
+    <div class="section-head"><h2>Maternal Details</h2><div class="section-line"></div></div>
+    <div class="family-grid">
+      <div class="family-card">
+        <div class="family-name">Girdharlal Narotambhai Pithdiya</div>
+        <div class="family-detail">Jamnagar</div>
+      </div>
+      <div class="family-card">
+        <div class="family-name">Hiteshbhai Girdharlal Pithdiya</div>
+        <div class="family-detail">Jamnagar</div>
+      </div>
+      <div class="family-card">
+        <div class="family-name">Sachinbhai Girdharlal Pithdiya</div>
+        <div class="family-detail">Jamnagar</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTOS -->
+  <section>
+    <div class="section-head"><h2>Photos</h2><div class="section-line"></div></div>
+
+    <div>
+      <span id="photoCountText"></span>
+    </div>
+
+    <div class="photo-masonry" id="photoMasonry"></div>
+
+    <div class="photos-empty" id="photosEmpty" style="display:none">
+      <span class="photos-empty-icon">📷</span>
+      No photos found in the <code>images/</code> folder
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <div class="section-head"><h2>Get in Touch</h2><div class="section-line"></div></div>
+    <div class="contact-card">
+      <div class="contact-avatar">SP</div>
+      <div>
+        <div class="contact-name">Shaileshbhai Parmar (Father)</div>
+        <div class="contact-sub">+91 93283 23193</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ LIGHTBOX ══ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">
+    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="lightbox-nav prev" onclick="lbNav(-1)">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt=""/>
+  <button class="lightbox-nav next" onclick="lbNav(1)">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<script>
+  // ─────────────────────────────────────────────────
+  //  LIST YOUR IMAGE FILES HERE
+  //  Just add / remove filenames inside the array.
+  //  All files must live in the  images/  folder
+  //  that sits next to this HTML file.
+  // ─────────────────────────────────────────────────
+  const IMAGE_FOLDER = 'images/';
+
+  const IMAGE_FILES = [
+    '1.jpeg',
+    '3.jpeg',
+    '4.jpeg',
+    // '5.png',
+    // 'trip_goa.jpeg',
+  ];
+  // ─────────────────────────────────────────────────
+
+  const photos = IMAGE_FILES.map(name => ({
+    src: IMAGE_FOLDER + name,
+    name: name
+  }));
+
+  let lbIndex = 0;
+
+  function renderGallery() {
+    const masonry  = document.getElementById('photoMasonry');
+    const empty    = document.getElementById('photosEmpty');
+    const countTxt = document.getElementById('photoCountText');
+
+    masonry.innerHTML = '';
+
+    if (photos.length === 0) {
+      empty.style.display = 'block';
+      return;
+    }
+
+    empty.style.display = 'none';
+
+    photos.forEach((p, i) => {
+      const item = document.createElement('div');
+      item.className = 'photo-item';
+
+      const img = document.createElement('img');
+      img.src     = p.src;
+      img.alt     = p.name;
+      img.loading = 'lazy';
+
+      // Hide broken images gracefully
+      img.onerror = () => { item.style.display = 'none'; };
+
+      item.appendChild(img);
+      item.addEventListener('click', () => openLightbox(i));
+      masonry.appendChild(item);
+    });
+  }
+
+  /* ── Lightbox ── */
+  function openLightbox(i) {
+    lbIndex = i;
+    document.getElementById('lightbox').classList.add('open');
+    updateLightbox();
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  function lbNav(dir) {
+    lbIndex = (lbIndex + dir + photos.length) % photos.length;
+    updateLightbox();
+  }
+  function updateLightbox() {
+    document.getElementById('lightboxImg').src = photos[lbIndex].src;
+    document.getElementById('lightboxCounter').textContent =
+      (lbIndex + 1) + ' / ' + photos.length;
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+  document.addEventListener('keydown', e => {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowRight') lbNav(1);
+    if (e.key === 'ArrowLeft')  lbNav(-1);
+  });
+
+  // Run on load
+  renderGallery();
+</script>
+
+</body>
+</html>
